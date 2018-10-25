@@ -1,4 +1,4 @@
-/**
+/*
  * This program implements the Command design pattern the following way:
  * A simple prgram with a Remote Controller that makes a lightbulb turn on and off.
  * The idea is to make it as less coupled as possible, and to be able to have freedom
