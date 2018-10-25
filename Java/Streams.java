@@ -25,17 +25,23 @@ public class Streams {
 		List<Person> people = Arrays.asList(new Person("Pepe",15), new Person("Paula",15), new Person("Lola",18), new Person("Tina",22), new Person("Pedro",33));	
 		List<Person> pPeople = people.stream().filter(person -> person.name.startsWith("P")).collect(Collectors.toList());
 		System.out.println("P People:"+pPeople+" ---\n");
+		System.out.println("-------------------------------");
 
 		Map<Integer,List<Person>> peopleAgeGroups = people.stream().collect(Collectors.groupingBy(Person::getAge));
 		peopleAgeGroups.forEach((age,person) -> System.out.println(""+age+" - "+person));
-		
 		people.stream().reduce((p1,p2) -> p1.age < p2.age ? p1 : p2).ifPresent(System.out::println);
+		System.out.println("-------------------------------");
 
 		Map<Integer,Map<Boolean,Set<Person>>> groupedPeople = people.stream().collect(Collectors.groupingBy(person -> person.getAge(),Collectors.groupingBy(person -> person.getName().startsWith("P"), Collectors.toSet())));
 		groupedPeople.forEach((age,group) -> System.out.println("For age " + age + " there is the group: " + group));
+		System.out.println("-------------------------------");
 
 		Map<Integer,Map<String,List<Person>>> anotherGroup = people.stream().collect(Collectors.groupingBy(Person::getAge, Collectors.groupingBy(Person::getName)));
 		anotherGroup.forEach((age,group) -> System.out.println("Another age " + age + " another group: "+group));
+		System.out.println("-------------------------------");
+
+		Map<Boolean,List<Person>> conditionSplit = people.stream().collect(Collectors.partitioningBy(person -> person.getAge() < 20));
+		conditionSplit.forEach((condition, group) -> System.out.println("" + condition + " --- " + group));
 		System.out.println("-------------------------------");
 
 		List<A> as = new ArrayList<>();
