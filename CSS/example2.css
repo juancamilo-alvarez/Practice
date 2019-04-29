@@ -1,0 +1,27 @@
+.flex-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	width: 800px;
+	height: 800px;
+	border-style: dotted;
+	border-color: orange;
+}
+
+.content {
+	border-style: solid;
+	border-width: 3px;
+}
+
+#contentA {
+	border-color: green;
+	width: 200px;
+	height: 400px;
+}
+
+#contentB {
+	border-color: red;
+	width: 300px;
+	height: 300px;
+}
